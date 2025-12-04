@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Book a Room</title>
+    <style>
+        body { font-family: Arial; background:#f4f4f4; padding-top:50px; }
+        .box { background:white; width:400px; margin:auto; padding:20px; border-radius:10px; }
+        input, select { width:90%; padding:10px; margin:10px; }
+        button { padding:10px 20px; background:#1e90ff; color:white; border:none; cursor:pointer; }
+    </style>
+</head>
+<body>
+
+<div class="box">
+    <h2>Book Your Stay</h2>
+
+    <label>Full Name</label>
+    <input id="name" type="text">
+
+    <label>Room Type</label>
+    <select id="room">
+        <option>Standard Room</option>
+        <option>Deluxe Room</option>
+        <option>Suite</option>
+    </select>
+
+    <label>Check-in Date</label>
+    <input id="checkin" type="date">
+
+    <label>Check-out Date</label>
+    <input id="checkout" type="date">
+
+    <label>Guests</label>
+    <input id="guests" type="number" min="1">
+
+    <button onclick="book()">Confirm Booking</button>
+</div>
+
+<script>
+    // Automatically fill room from rooms.html link
+    const urlParams = new URLSearchParams(window.location.search);
+    const roomType = urlParams.get("room");
+    if (roomType) document.getElementById("room").value = roomType;
+
+    function book() {
+        const name = document.getElementById("name").value;
+        const room = document.getElementById("room").value;
+        const checkin = document.getElementById("checkin").value;
+        const checkout = document.getElementById("checkout").value;
+        const guests = document.getElementById("guests").value;
+
+        if (!name || !checkin || !checkout || !guests) {
+            alert("Please fill all fields");
+            return;
+        }
+
+        // Save booking details
+        localStorage.setItem("bookingName", name);
+        localStorage.setItem("bookingRoom", room);
+        localStorage.setItem("bookingCheckin", checkin);
+        localStorage.setItem("bookingCheckout", checkout);
+        localStorage.setItem("bookingGuests", guests);
+
+        window.location.href = "confirmation.html";
+    }
+</script>
+
+</body>
+</html>
