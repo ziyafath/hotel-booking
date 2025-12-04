@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Booking Confirmed</title>
+    <style>
+        body { font-family: Arial; text-align:center; padding-top:60px; background:#eef; }
+        .box { background:white; display:inline-block; padding:30px; border-radius:10px; }
+    </style>
+</head>
+<body>
+
+<div class="box">
+    <h1>Booking Confirmed!</h1>
+    <p><b>Name:</b> <span id="name"></span></p>
+    <p><b>Room:</b> <span id="room"></span></p>
+    <p><b>Check-in:</b> <span id="checkin"></span></p>
+    <p><b>Check-out:</b> <span id="checkout"></span></p>
+    <p><b>Guests:</b> <span id="guests"></span></p>
+
+    <br><a href="index.html">Back to Home</a>
+</div>
+
+<script>
+    document.getElementById("name").innerText = localStorage.getItem("bookingName");
+    document.getElementById("room").innerText = localStorage.getItem("bookingRoom");
+    document.getElementById("checkin").innerText = localStorage.getItem("bookingCheckin");
+    document.getElementById("checkout").innerText = localStorage.getItem("bookingCheckout");
+    document.getElementById("guests").innerText = localStorage.getItem("bookingGuests");
+</script>
+
+</body>
+</html>
